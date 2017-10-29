@@ -11,6 +11,7 @@ var keys = {
 		id: "4ee2b10a6fa14d9fbb7381a7d8a3de57",
 	  	secret: "1591902d531843629a67e43a56e6693c",
 	},
+	omdbKey: "40e9cece",
 };
 
 

@@ -2,6 +2,7 @@ var keys = require("./keys.js");
 var Twitter = require("twitter");
 var args = process.argv;
 var Spotify = require("node-spotify-api");
+var request = require("request");
 
 switch (args[2]) {
 	case "my-tweets":
@@ -51,7 +52,26 @@ function spotify() {
 	});
 }
 
-function ombd(){
+function omdb(){
+	var search = process.argv[3];
+	var url = "http://www.omdbapi.com/?apikey=" + keys.omdbKey + "&type=movie&t=" + search 
+	request(url, function (error, response, body) {
+	  if (error){
+	  	console.log("error");
+	  }   
+
+ 	var body = JSON.parse(body);
+	  console.log('body:', body); // Print the HTML for the Google homepage.
+	  console.log("Title:", body.Title);
+	  console.log("Year:", body.Year);
+	  console.log("IMDB Rating:", body.imdbRating);
+	  console.log("Rotten Tomatoes Rating:", body.Ratings[1].Value);
+	  console.log("Country:", body.Country);
+	  console.log("Language:", body.Language);
+	  console.log("Plot:", body.Plot);
+	  console.log("Actors:", body.Actors);
+
+	});
 	console.log("movie request");
 
 }
